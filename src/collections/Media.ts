@@ -5,7 +5,6 @@ const Media: CollectionConfig = {
     slug: 'media',
     upload: {
         staticDir: path.resolve(__dirname, '../../media'),
-        // Specify the size name that you'd like to use as admin thumbnail
         adminThumbnail: 'thumbnail',
         imageSizes: [
             {
