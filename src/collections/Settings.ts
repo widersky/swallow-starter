@@ -17,14 +17,14 @@ const Settings: GlobalConfig = {
                                     name: 'mainPage',
                                     label: 'Strona główna',
                                     type: 'relationship',
-                                    relationTo: 'strony',
+                                    relationTo: 'page',
                                     hasMany: false,
                                 },
                                 {
                                     name: 'privacyPolicyPage',
                                     label: 'Strona Polityki Prywatności',
                                     type: 'relationship',
-                                    relationTo: 'strony',
+                                    relationTo: 'page',
                                     hasMany: false,
                                 }
                             ]

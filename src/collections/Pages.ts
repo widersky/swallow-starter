@@ -6,103 +6,112 @@ import FAQ from "../blocks/FAQ";
 import HeroSlider from "../blocks/HeroSlider";
 
 const Pages: CollectionConfig = {
-    slug: 'strony',
-    labels: {
-        singular: 'Strona',
-        plural: 'Strony',
+  slug: 'page',
+  labels: {
+    singular: {
+      'en': 'Subpage',
+      'pl': 'Podstrona',
     },
-    admin: {
-        defaultColumns: [ 'title', 'author', 'category', 'tags', 'status' ],
-        useAsTitle: 'title',
+    plural: {
+      'en': 'Subpages',
+      'pl': 'Podstrony',
     },
-    access: {
-        read: () => true,
+  },
+  admin: {
+    defaultColumns: [ 'title', 'author', 'category', 'tags', 'status' ],
+    useAsTitle: 'title',
+  },
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'title',
+      type: 'text',
+      label: {
+        'en': 'Title',
+        'pl': 'Tytuł',
+      },
     },
-    fields: [
+    {
+      type: 'tabs',
+      tabs: [
         {
-            name: 'title',
-            type: 'text',
-            label: 'Tytuł',
+          label: 'Budowa strony',
+          fields: [
+            {
+              name: 'layout',
+              type: 'blocks',
+              label: 'Sekcje',
+              labels: {
+                singular: 'Sekcja',
+                plural: 'Sekcje',
+              },
+              minRows: 1,
+              maxRows: 10,
+              blocks: [
+                Hero,
+                HeroSlider,
+                FAQ,
+              ]
+            },
+          ]
         },
         {
-            type: 'tabs',
-            tabs: [
-                {
-                    label: 'Budowa strony',
-                    fields: [
-                        {
-                            name: 'layout',
-                            type: 'blocks',
-                            label: 'Sekcje',
-                            labels: {
-                                singular: 'Sekcja',
-                                plural: 'Sekcje',
-                            },
-                            minRows: 1,
-                            maxRows: 10,
-                            blocks: [
-                                Hero,
-                                HeroSlider,
-                                FAQ,
-                            ]
-                        },
-                    ]
-                },
-                {
-                    label: 'SEO',
-                    description: 'W przypadku niewypełnienia poniższych pól, zostaną użyte domyślne wartości - tytuł strony oraz globalny opis strony.',
-                    fields: [
-                        {
-                            name: 'seotitle',
-                            type: 'text',
-                            label: 'Tytuł SEO',
-                        },
-                        {
-                            name: 'seodescription',
-                            type: 'textarea',
-                            label: 'Opis SEO',
-                            maxLength: 160,
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            name: 'status',
-            type: 'select',
-            options: [
-                {
-                    value: 'draft',
-                    label: 'Szkic',
-                },
-                {
-                    value: 'published',
-                    label: 'Opublikowany',
-                },
-            ],
-            defaultValue: 'draft',
-            admin: {
-                position: 'sidebar',
+          label: 'SEO',
+          description: 'W przypadku niewypełnienia poniższych pól, zostaną użyte domyślne wartości - tytuł strony oraz globalny opis strony.',
+          fields: [
+            {
+              name: 'seotitle',
+              type: 'text',
+              label: 'Tytuł SEO',
+            },
+            {
+              name: 'seodescription',
+              type: 'textarea',
+              label: 'Opis SEO',
+              maxLength: 160,
             }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'status',
+      type: 'select',
+      options: [
+        {
+          value: 'draft',
+          label: 'Szkic',
         },
         {
-            name: 'publishedDate',
-            type: 'date',
-            label: 'Data publikacji',
-            admin: {
-                position: 'sidebar',
-            }
+          value: 'published',
+          label: 'Opublikowany',
         },
-        {
-            name: 'author',
-            type: 'relationship',
-            relationTo: 'users',
-            label: 'Autor',
-            admin: {
-                position: 'sidebar',
-            }
-        },
-    ],
+      ],
+      defaultValue: 'draft',
+      admin: {
+        position: 'sidebar',
+      }
+    },
+    {
+      name: 'publishedDate',
+      type: 'date',
+      label: 'Data publikacji',
+      admin: {
+        position: 'sidebar',
+      }
+    },
+    {
+      name: 'author',
+      type: 'relationship',
+      relationTo: 'users',
+      label: 'Autor',
+      admin: {
+        position: 'sidebar',
+      }
+    },
+  ],
 }
 
 export default Pages;
