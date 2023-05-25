@@ -43,7 +43,16 @@ const Settings: GlobalConfig = {
         {
           label: 'Dane kontaktowe',
           description: 'Dane umieszczone tutaj są globalne – mogą być używane w różnych miejscach strony, przede wszystkim w okolicy stopki, przy formularzu kontaktowym lub u samej góry strony. Niektóre sekcje strony mogą zawierać opcje wprowadzenia innych informacji.',
-          fields: [],
+          fields: [
+            {
+              type: 'text',
+              name: 'companyName',
+              label: {
+                'en': 'Company name',
+                'pl': 'Nazwa firmy',
+              }
+            }
+          ],
         },
         {
           label: 'SEO',

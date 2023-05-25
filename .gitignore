@@ -165,3 +165,6 @@ dist
 
 ### IntelliJ+ ###
 .idea/*
+
+### System files and folders ###
+.DS_Store
